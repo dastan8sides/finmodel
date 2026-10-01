@@ -1,0 +1,33 @@
+from pathlib import Path
+
+months = "['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь']"
+p = Path('model-v2.js')
+s = p.read_text(encoding='utf-8-sig').replace(" 'use strict';", " 'use strict';\n const monthNames=" + months + ';')
+s = s.replace('const api={defaults,', 'const api={monthNames,defaults,')
+s = s.replace("'Ручной оборот · М'+(i+1)", "'Ручной оборот · '+monthNames[i]")
+p.write_text(s, encoding='utf-8')
+p = Path('app-v2.js')
+s = p.read_text(encoding='utf-8')
+s = s.replace('const {defaults,', 'const {monthNames,defaults,')
+s = s.replace('let control;if(choices[key])', '''let control;if(['start','end','month'].includes(key))control=`<select id="${id}" data-path="${path}">${monthNames.map((name,i)=>`<option value="${i+1}"${i+1===value?' selected':''}>${name}</option>`).join('')}</select>`;else if(choices[key])''')
+s = s.replace("input.type==='number'?input.valueAsNumber:input.value", "typeof get(next,input.dataset.path)==='number'?Number(input.value):input.value")
+s = s.replace("'Оборот · М'+(i+1)", "'Оборот · '+monthNames[i]")
+s = s.replace('Повторить М1 на весь год', 'Повторить январь на весь год')
+s = s.replace('Месяц ${i+1}</option>', '${monthNames[i]}</option>')
+s = s.replace('>М${i+1}</text>', '>${monthNames[i]}</text>')
+s = s.replace("'М'+m.payback", 'monthNames[m.payback-1]')
+s = s.replace('<td>М${r.month}</td>', '<td>${monthNames[r.month-1]}</td>')
+p.write_text(s, encoding='utf-8')
+p = Path('export-v2.js')
+s = p.read_text(encoding='utf-8').replace("'М'+(i+1)", 'root.FinModel.monthNames[i]')
+s = s.replace("const hints={", "const hints={start:'1 — январь, 2 — февраль, …, 12 — декабрь',end:'1 — январь, 2 — февраль, …, 12 — декабрь',month:'1 — январь, 2 — февраль, …, 12 — декабрь',")
+p.write_text(s, encoding='utf-8')
+for filename in ['model-v2.js', 'app-v2.js', 'export-v2.js']:
+    p = Path(filename)
+    s = p.read_text(encoding='utf-8')
+    for a,b in [('на конец М12','на конец декабря'),('до М1','до января'),('с М1','с января'),('структуре М1','структуре января'),('выручка М1','выручка января')]:
+        s = s.replace(a,b)
+    p.write_text(s, encoding='utf-8')
+p = Path('index.html')
+s = p.read_text(encoding='utf-8').replace('app-v2.js?v=single-page', 'app-v2.js?v=month-names').replace('src="model-v2.js"','src="model-v2.js?v=month-names"').replace('src="export-v2.js"','src="export-v2.js?v=month-names"')
+p.write_text(s, encoding='utf-8')

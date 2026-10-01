@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fafaf8"><meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Контур — финансовая модель</title>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="expanded.css?v=2">
+<link rel="stylesheet" href="single-page.css">
+<link rel="stylesheet" href="convenience.css?v=1">
+<link rel="stylesheet" href="dock-panels.css">
+<link rel="stylesheet" href="game-theme.css?v=1">
+</head>
+<body>
+<div class="workspace">
+  <aside class="intro"><div class="brand"><span class="brand-mark">к.</span> контур</div><div><p class="eyebrow">ФИНАНСЫ В ОДНОМ МЕСТЕ</p><h1>Ваш бизнес.<br>В ясных<br><span>цифрах.</span></h1><p class="intro-copy">От первой идеи до понятной модели.<br>Меняйте вводные. Смотрите вперёд.</p></div><div class="intro-bottom"><span>МОБИЛЬНЫЙ ПРОТОТИП</span><span>01 / 2026</span></div></aside>
+  <main class="app">
+    <header class="topbar"><a href="#" class="wordmark" aria-label="Контур, главная">к.</a><span>Финансовая модель</span><span class="version">v.01</span></header>
+    <div class="project-line"><span class="status-dot"></span><span id="project-display">Мой бизнес</span><span class="save-state" id="save-state">На этом устройстве</span></div>
+    <section id="overview" class="page">
+      <div class="page-heading"><div><p class="eyebrow">ОБЗОР МОДЕЛИ</p><h2>Всё сходится.</h2></div><span class="period-tag">12 месяцев</span></div>
+      <div class="scenario-control" aria-label="Сценарий"><button data-case="base" class="selected" aria-pressed="true">Базовый</button><button data-case="low" aria-pressed="false">Осторожный</button><button data-case="high" aria-pressed="false">Оптимистичный</button></div>
+      <p class="scenario-note" id="scenario-note">Ваши исходные данные без изменений</p>
+      <section class="hero-card" aria-label="Годовая прибыль"><div class="hero-top"><span>Прибыль за год</span><span id="hero-currency">KZT ↗</span></div><div class="hero-number" id="annual-profit">—</div><div class="hero-bottom"><span>После условного налога</span><span id="profit-margin">—</span></div></section>
+      <div class="metrics"><div><span>Выручка за год</span><strong id="annual-revenue">—</strong></div><div><span>Расходы за год</span><strong id="annual-costs">—</strong></div></div>
+      <section class="chart-section"><div class="section-heading"><h3>Динамика бизнеса</h3><span id="chart-unit">тыс. ₸</span></div><div class="legend"><span><i class="solid"></i>Выручка</span><span><i class="dashed"></i>Расходы с налогом</span></div><div id="chart"></div></section>
+      <section class="insights"><div><span class="insight-icon">◎</span><div><span>Точка безубыточности</span><small>За месяц, до налога</small></div><strong id="break-even">—</strong></div><div><span class="insight-icon">↗</span><div><span>Возврат вложений</span><small>По накопленному потоку</small></div><strong id="payback">—</strong></div></section>
+      <button class="export-button" data-export><span>↓</span> Скачать Excel <span class="filetype">.xlsx</span></button>
+      <p class="footnote">Демо-данные · измените их во вкладке «Данные»</p>
+    </section>
+    <section id="inputs" class="page" hidden>
+      <div class="page-heading"><div><p class="eyebrow">ОСНОВА РАСЧЁТА</p><h2>Ваши вводные.</h2></div><span class="period-tag">Редактировать</span></div>
+      <form id="model-form" novalidate>
+        <div class="form-section"><h3><span>01</span> Проект</h3><label>Название проекта<input name="name" maxlength="50" type="text" value="Мой бизнес"></label><label>Валюта<select name="currency"><option value="KZT">₸ · Тенге</option><option value="RUB">₽ · Рубли</option><option value="USD">$ · Доллары</option><option value="EUR">€ · Евро</option></select></label></div>
+        <div class="form-section"><h3><span>02</span> Продажи</h3><label>Продажи в первый месяц <span>шт.</span><input name="units" type="number" inputmode="decimal" min="0" max="10000000" step="1" required></label><label>Средний чек <span data-currency>₸</span><input name="price" type="number" inputmode="decimal" min="0" max="1000000000" step="any" required></label><label>Рост продаж в месяц <span>%</span><input name="growth" type="number" inputmode="decimal" min="-100" max="100" step="any" required></label></div>
+        <div class="form-section"><h3><span>03</span> Расходы и вложения</h3><label>Переменные расходы <span>% выручки</span><input name="variable" type="number" inputmode="decimal" min="0" max="100" step="any" required></label><label>Постоянные расходы в месяц <span data-currency>₸</span><input name="fixed" type="number" inputmode="decimal" min="0" max="1000000000000" step="any" required></label><label>Условный налог на прибыль <span>%</span><input name="tax" type="number" inputmode="decimal" min="0" max="100" step="any" required></label><label>Первоначальные вложения <span data-currency>₸</span><input name="investment" type="number" inputmode="decimal" min="0" max="1000000000000" step="any" required></label></div>
+        <p id="form-error" role="alert"></p><p class="method-note">Упрощённый прогноз на 12 месяцев. Налог начисляется только на положительную месячную прибыль. Вложения учитываются в денежном потоке, но не в расходах. Без НДС, кредитов, амортизации и отсрочек платежей. Валюта меняет обозначение, без конвертации.</p><button type="button" class="reset-button" id="reset">Вернуть демо-данные</button>
+      </form>
+    </section>
+    <section id="forecast" class="page" hidden><div class="page-heading"><div><p class="eyebrow">ПЛАН НА 12 МЕСЯЦЕВ</p><h2>Шаг за шагом.</h2></div></div><div class="forecast-summary"><span>Денежный поток за год<br><small>После первоначальных вложений</small></span><strong id="cash-total">—</strong></div><p class="table-hint">Суммы в <span id="table-currency">₸</span> · таблицу можно прокрутить →</p><div class="table-scroll"><table><thead><tr><th>Месяц</th><th>Выручка</th><th>Расходы¹</th><th>Прибыль</th><th>Накопленный поток²</th></tr></thead><tbody id="forecast-body"></tbody><tfoot id="forecast-foot"></tfoot></table></div><p class="method-note">¹ Включая условный налог.<br>² С учётом вложений перед первым месяцем.<br>Сценарий: <span id="forecast-case">Базовый</span>. Расчёт без промежуточного округления; отображение — до целых.</p><button class="export-button" data-export><span>↓</span> Скачать Excel <span class="filetype">.xlsx</span></button></section>
+    <nav class="bottom-nav" aria-label="Разделы приложения"><button data-page="overview" class="active" aria-current="page"><span>◫</span>Обзор</button><button data-page="inputs"><span>≡</span>Данные</button><button data-page="forecast"><span>↗</span>Прогноз</button></nav>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </main>
+</div>
+<script src="model-v2.js?v=financial-metrics"></script><script src="financial-core.js"></script><script src="financial-export.js"></script><script src="zip.js"></script><script src="export-v2.js?v=finance-grid-2"></script><script src="app-v2.js?v=financial-metrics"></script>
+<script src="convenience.js?v=1"></script>
+<script src="dock-panels.js"></script>
+<script src="financial-ui.js"></script>
+</body>
+</html>

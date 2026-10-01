@@ -1,0 +1,104 @@
+{
+  "format": "kontur-model",
+  "version": 2,
+  "savedAt": "2026-09-22T09:43:05.040Z",
+  "scenario": "base",
+  "model": {
+    "version": 2,
+    "name": "Мой бизнес",
+    "currency": "KZT",
+    "revenueMode": "items",
+    "manualRevenue": [
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000,
+      2550000
+    ],
+    "manualCostPercent": 35,
+    "taxMode": "profit",
+    "tax": 10,
+    "collectionDelay": 0,
+    "paymentDelay": 0,
+    "openingCash": 0,
+    "funding": 3000000,
+    "investment": 3000000,
+    "initialLife": 36,
+    "loan": 0,
+    "loanRate": 18,
+    "loanTerm": 24,
+    "sales": [
+      {
+        "name": "Основной продукт",
+        "units": 300,
+        "price": 8500,
+        "growth": 4,
+        "cost": 35,
+        "start": 1,
+        "end": 12
+      }
+    ],
+    "staff": [
+      {
+        "name": "Менеджер",
+        "count": 1,
+        "salary": 300000,
+        "bonus": 0,
+        "charges": 15,
+        "growth": 0,
+        "start": 1,
+        "end": 12
+      },
+      {
+        "name": "Менеджер — копия",
+        "count": 1,
+        "salary": 300000,
+        "bonus": 0,
+        "charges": 15,
+        "growth": 0,
+        "start": 1,
+        "end": 12
+      }
+    ],
+    "marketing": [
+      {
+        "name": "Реклама",
+        "budget": 120000,
+        "share": 0,
+        "growth": 0,
+        "cpc": 150,
+        "leadRate": 10,
+        "saleRate": 20,
+        "check": 8500,
+        "start": 1,
+        "end": 12
+      }
+    ],
+    "expenses": [
+      {
+        "name": "Аренда",
+        "type": "fixed",
+        "amount": 250000,
+        "growth": 0,
+        "start": 1,
+        "end": 12
+      },
+      {
+        "name": "Сервисы и связь",
+        "type": "fixed",
+        "amount": 35000,
+        "growth": 0,
+        "start": 1,
+        "end": 12
+      }
+    ],
+    "assets": []
+  }
+}
