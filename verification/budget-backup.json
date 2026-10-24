@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "currency": "KZT",
+  "accounts": [
+    {
+      "id": "388196ae-4b82-4dfa-8b2c-a5ca78691a73",
+      "name": "Наличные",
+      "opening": 0
+    },
+    {
+      "id": "9f2b3914-b8db-4be9-8bae-8b113b1f2697",
+      "name": "Карта",
+      "opening": 50000
+    }
+  ],
+  "transactions": [
+    {
+      "id": "3b8cd71d-bba0-4eed-b880-2cee43da9017",
+      "type": "income",
+      "date": "2026-10-03",
+      "amount": 10000,
+      "account": "388196ae-4b82-4dfa-8b2c-a5ca78691a73",
+      "to": "",
+      "category": "Зарплата",
+      "note": ""
+    },
+    {
+      "id": "ab31a00a-c862-4d32-87b0-c8255d5c1e0c",
+      "type": "expense",
+      "date": "2026-10-03",
+      "amount": 3000,
+      "account": "388196ae-4b82-4dfa-8b2c-a5ca78691a73",
+      "to": "",
+      "category": "Продукты",
+      "note": ""
+    },
+    {
+      "id": "ea60669e-1ec3-47ef-a780-53004150ca89",
+      "type": "transfer",
+      "date": "2026-10-03",
+      "amount": 2000,
+      "account": "388196ae-4b82-4dfa-8b2c-a5ca78691a73",
+      "to": "9f2b3914-b8db-4be9-8bae-8b113b1f2697",
+      "category": "Перевод",
+      "note": ""
+    }
+  ],
+  "plans": [
+    {
+      "id": "81f75b80-ea20-4aed-b9fa-7031b3bfb436",
+      "month": "2026-10",
+      "category": "продукты",
+      "amount": 2500
+    }
+  ]
+}

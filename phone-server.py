@@ -4,10 +4,10 @@ from urllib.parse import urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parent
 ALLOWED = {
-    'index.html', 'styles.css', 'expanded.css', 'single-page.css',
+    'index.html', 'business-tabs.js', 'interface.css', 'interface.js', 'budget.js', 'budget.css', 'styles.css', 'expanded.css', 'single-page.css',
     'convenience.css', 'game-theme.css', 'dock-panels.css', 'model-v2.js', 'zip.js',
     'export-v2.js', 'app-v2.js', 'convenience.js', 'dock-panels.js',
-    'financial-core.js', 'financial-export.js', 'financial-ui.js',
+    'loan-calculator.js', 'financial-core.js', 'financial-export.js', 'financial-ui.js',
 }
 
 class AppHandler(SimpleHTTPRequestHandler):
